@@ -6,7 +6,7 @@ EMPTY_BOARD = [
     ['', '', '',],
 ]
 
-def print_board(board):
+def print_board(board: list) -> None:
     str = 6 * '--' + '\n'
     for x in board:
         for y in x:
@@ -17,17 +17,17 @@ def print_board(board):
         str += '|\n' + 6 * '--' + '\n'
     print(str)
 
-def is_valid(board, move):
+def is_valid(board: list, move: str) -> bool:
     if move not in VALID_MOVES:
         return False
     [x, y] = move.split(',')
     x, y = int(x) - 1, int(y) - 1
     return board[x][y] == ''
 
-def clean_input(input):
+def clean_input(input: str) -> str:
     return input.strip().replace(' ', '')
 
-def is_win(board):
+def is_win(board: list) -> bool:
     for i in range(3):
         if board[0][i] != '' and board[0][i] == board[1][i] and board[1][i] == board[2][i]:
             return True
@@ -39,12 +39,12 @@ def is_win(board):
         return True
     return False
 
-def add_move(board, move, sign):
+def add_move(board: list, move: str, sign: str) -> None:
     [x, y] = move.split(',')
     x, y = int(x) - 1, int(y) - 1
     board[x][y] = sign
 
-def get_valid_input(board, player):
+def get_valid_input(board: list, player: int) -> str:
     player_input = input('Player ' + str(player) + ' please enter ' + PLAYER_SIGN[player-1] + ' in valid place ')
     player_input = clean_input(player_input)
     while not is_valid(board, player_input):
