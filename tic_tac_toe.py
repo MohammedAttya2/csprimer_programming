@@ -1,6 +1,6 @@
-VALID_MOVES = ['1,1', '1,2', '1,3','2,1', '2,2', '2,3','3,1', '3,2', '3,3']
-PLAYER_SIGN = ['X', 'O']
-EMPTY_BOARD = [
+VALID_MOVES: list[str] = ['1,1', '1,2', '1,3','2,1', '2,2', '2,3','3,1', '3,2', '3,3']
+PLAYER_SIGN: list[str] = ['X', 'O']
+EMPTY_BOARD: list[list[str]] = [
     ['', '', '',],
     ['', '', '',],
     ['', '', '',],
@@ -54,10 +54,9 @@ def get_valid_input(board: list, player: int) -> str:
     return player_input
 
 if __name__ == '__main__':
-    is_finished = False
-    current_move = 0
+    current_move: int = 0
     board = EMPTY_BOARD
-    while not is_finished:
+    while True:
         player = current_move % 2 + 1
         print_board(board)
         player_input = get_valid_input(board, player)
